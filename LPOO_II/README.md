@@ -18,16 +18,16 @@ A pilha foi implementada manualmente com **LinkedList**, sem utilizar a classe `
 
 ## 🛠 Estrutura do Projeto
 
-- **Classe `Pagina`**  
+- **Classe `Page`**  
   Representa uma página visitada, com os atributos `titulo` e `url`.
 
-- **Classe `PilhaPaginas`**  
+- **Classe `StackPage`**  
   Implementa os métodos básicos de uma pilha:  
   - `push(Pagina p)` → adiciona uma nova página.  
   - `pop()` → remove a página atual.  
   - `peek()` → mostra a página atual.  
   - `isEmpty()` → verifica se a pilha está vazia.  
-  - `exibirHistorico()` → mostra todo o histórico de navegação.  
+  - `showViewHistory()` → mostra todo o histórico de navegação.  
 
 - **Classe `Main`**  
   Contém o **menu interativo** para o usuário navegar e interagir com o histórico.
@@ -38,6 +38,6 @@ A pilha foi implementada manualmente com **LinkedList**, sem utilizar a classe `
 
 ```plaintext
 navegador/
-│── Pagina.java
-│── PilhaPaginas.java
+│── Page.java
+│── StackPage.java
 │── Main.java
