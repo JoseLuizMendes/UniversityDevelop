@@ -1,46 +1,43 @@
-1 – Imagine que você está desenvolvendo uma aplicação que simula a navegação em um
-navegador de internet. Sempre que o usuário acessa uma nova página, ela é adicionada
-ao histórico de navegação. Se o usuário desejar voltar, o sistema deve recuperar a página
-anterior a partir da pilha de páginas visitadas.
-O objetivo deste trabalho é implementar, em Java, uma aplicação que utilize a estrutura
-de dados Pilha para gerenciar o histórico das páginas visitadas. Para isso, construa as
-classes abaixo:
-Especificações
+# 📚 Navegador com Histórico usando Pilha em Java
 
-1. Classe Pagina
-  • Deve conter, no mínimo, os atributos:
-  ◦ String url
-  ◦ String titulo
-  • Construtor e métodos get/set.
-• Método toString() para exibir os dados de forma legível.
+Este projeto implementa uma aplicação em **Java** que simula o funcionamento de um navegador simples, armazenando o **histórico de páginas visitadas** com a estrutura de dados **Pilha**.  
 
-2. Classe PilhaPaginas
-  • Implementar os métodos básicos da pilha:
-  ◦ push(Pagina p) → adiciona uma nova página.
-  ◦ pop() → remove a página atual.
-  ◦ peek() → mostra a página atual .
-  ◦ isEmpty() → verifica se a pilha está vazia.
+A pilha foi implementada manualmente com **LinkedList**, sem utilizar a classe `Stack` da biblioteca Java.
 
-3. Classe Main
-  • Implementar um menu de opções para o usuário interagir:
-  1 – Acessar nova página: solicitar título e URL e empilhar.
-  2 – Voltar para página anterior
-  3 – Ver página atual (título e URL)
-  4 – Exibir histórico de navegação.
-  5 – Sair.
+---
 
-Regras do Trabalho
-  • A implementação da pilha deve ser feita usando LinkedList (não usar Stack da
-  biblioteca Java).
-  • O programa deve ser orientado a objetos, com no mínimo as três classes descritas.
-  • O menu deve permitir que o usuário interaja de forma contínua até escolher sair.
-  • O código deve estar identado e bem estruturado.
+## 🚀 Funcionalidades
 
-Critérios de Avaliação
-  • Correta implementação da classe Pagina (0,5).
-  • Correta implementação da pilha (PilhaPaginas) com os métodos exigidos (0,5 pts).
-  • Funcionamento adequado do menu na classe Main (1,5 pts).
-  • Clareza, legibilidade e documentação do código (0,5 pts).
+- **Acessar nova página**: solicita título e URL e adiciona ao histórico.  
+- **Voltar para página anterior**: remove a página atual da pilha.  
+- **Ver página atual**: exibe título e URL da página no topo da pilha.  
+- **Exibir histórico de navegação**: mostra todas as páginas visitadas, do mais recente ao mais antigo.  
+- **Sair**: encerra o programa.
 
-Nota máxima: 10 pontos.
+---
 
+## 🛠 Estrutura do Projeto
+
+- **Classe `Pagina`**  
+  Representa uma página visitada, com os atributos `titulo` e `url`.
+
+- **Classe `PilhaPaginas`**  
+  Implementa os métodos básicos de uma pilha:  
+  - `push(Pagina p)` → adiciona uma nova página.  
+  - `pop()` → remove a página atual.  
+  - `peek()` → mostra a página atual.  
+  - `isEmpty()` → verifica se a pilha está vazia.  
+  - `exibirHistorico()` → mostra todo o histórico de navegação.  
+
+- **Classe `Main`**  
+  Contém o **menu interativo** para o usuário navegar e interagir com o histórico.
+
+---
+
+## 📂 Estrutura de Pastas
+
+```plaintext
+navegador/
+│── Pagina.java
+│── PilhaPaginas.java
+│── Main.java
