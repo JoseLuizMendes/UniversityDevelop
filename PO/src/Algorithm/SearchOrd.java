@@ -199,4 +199,70 @@ public class SearchOrd {
         arr[i] = root;
         return comps;
     }
+    
+    // ------------------- QUICKSORT (padrão da professora) -------------------
+    public static Statistics quickSort(int[] arr) {
+        long comps = 0, moves = 0;
+        long start = System.nanoTime();
+
+        if (arr.length > 1) {
+            long[] counts = new long[2]; // [0]=comparisons, [1]=moves
+            quickSortPartition(arr, 0, arr.length - 1, counts);
+            comps = counts[0];
+            moves = counts[1];
+        }
+
+        long end = System.nanoTime();
+        return new Statistics(comps, moves, end - start);
+    }
+
+    // Mesma lógica do exemplo da professora: pivo = arr[(i+j)/2], do...while, if (i <= j) swap, recursões
+    private static void quickSortPartition(int[] arr, int left, int right, long[] counts) {
+        int i = left, j = right;
+        int pivot = arr[(i + j) / 2];
+
+        do {
+            // while da esquerda: while (arr[i] < pivot) i++;
+            while (true) {
+                counts[0]++; // comparação do while
+                if (arr[i] < pivot) {
+                    i++;
+                } else {
+                    break;
+                }
+            }
+
+            // while da direita: while (arr[j] > pivot) j--;
+            while (true) {
+                counts[0]++; // comparação do while
+                if (arr[j] > pivot) {
+                    j--;
+                } else {
+                    break;
+                }
+            }
+
+            // if (i <= j) { swap; i++; j--; }
+            counts[0]++; // comparação do if
+            if (i <= j) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                counts[1] += 3; // swap = 3 movimentações
+                i++;
+                j--;
+            }
+        } while (i <= j);
+        counts[0]++; // comparação final do do-while
+
+        // Recursões
+        counts[0]++; // if (left < j)
+        if (left < j) {
+            quickSortPartition(arr, left, j, counts);
+        }
+        counts[0]++; // if (i < right)
+        if (i < right) {
+            quickSortPartition(arr, i, right, counts);
+        }
+    }
 }
