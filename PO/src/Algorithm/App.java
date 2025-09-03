@@ -5,49 +5,49 @@ import java.util.*;
 public class App {
     public static Scanner sc = new Scanner(System.in);
 
-    public static void mostrarMenu() {
+    public static void showMenu() {
         System.out.println("\n\t    === MENU ===");
-        System.out.println("1 - Gerar e Gravar Dados em Arquivo");
-        System.out.println("2 - Ler e Exibir Dados de um Arquivo");
-        System.out.println("3 - Ordenar");
-        System.out.println("0 - Sair");
-        System.out.print("\nDigite a opção que deseja executar: ");
+        System.out.println("1 - Generate and Save Data to File");
+        System.out.println("2 - Read and Display Data from File");
+        System.out.println("3 - Sort");
+        System.out.println("0 - Exit");
+        System.out.print("\nChoose an option: ");
     }
 
-    public static void executarOpcao(int op) {
+    public static void executeOption(int op) {
         switch (op) {
             case 1:
                 GenRecord.alert();
-                GenRecord.Gravar(sc);
+                GenRecord.save(sc);
                 break;
             case 2:
                 ReadShow.alert();
-                ReadShow.Ler(sc);
+                ReadShow.read(sc);
                 break;
             case 3:
-                System.out.print("Informe o nome do arquivo (sem extensão): ");
-                String nomeArquivo = sc.next() + ".txt";
+                System.out.print("Enter the file name (without extension): ");
+                String fileName = sc.next() + ".txt";
 
-                int[] numeros = ReadShow.lerArquivo(nomeArquivo);
+                int[] numbers = ReadShow.readFile(fileName);
 
-                if (numeros.length == 0) {
-                    System.out.println("Não há números para ordenar.");
+                if (numbers.length == 0) {
+                    System.out.println("No numbers to sort.");
                 } else {
-                    System.out.println("\nNúmeros originais:");
-                    System.out.println(Arrays.toString(numeros));
+                    System.out.println("\nOriginal numbers:");
+                    System.out.println(Arrays.toString(numbers));
 
-                    SearchOrd.Menu(sc, numeros);
+                    SearchOrd.menu(sc, numbers);
 
-                    System.out.println("\nNúmeros ordenados:");
-                    System.out.println(Arrays.toString(numeros));
+                    System.out.println("\nSorted numbers:");
+                    System.out.println(Arrays.toString(numbers));
                 }
                 break;
 
             case 0:
-                System.out.println("Saindo...");
+                System.out.println("Exiting...");
                 break;
             default:
-                System.out.println("Opção inválida!");
+                System.out.println("Invalid option!");
                 break;
         }
     }
@@ -55,10 +55,16 @@ public class App {
     public static void main(String[] args) {
         int op;
         do {
-            mostrarMenu();
+            showMenu();
             op = sc.nextInt();
-            executarOpcao(op);
+            executeOption(op);
         } while (op != 0);
-
+        
+        say();
     }
+
+	private static void say() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -1,20 +1,21 @@
 package Algorithm;
 
-public class Statistics{
-    public long comparacoes;
-    public long movimentacoes;
-    public long tempoExecucao; // em nanossegundos
+public class Statistics {
+    public long comparisons;
+    public long moves;
+    public long execTime; // in nanoseconds
 
-    public Statistics(long comparacoes, long movimentacoes, long tempoExecucao) {
-        this.comparacoes = comparacoes;
-        this.movimentacoes = movimentacoes;
-        this.tempoExecucao = tempoExecucao;
+    public Statistics(long comparisons, long moves, long execTime) {
+        this.comparisons = comparisons;
+        this.moves = moves;
+        this.execTime = execTime;
     }
 
     @Override
     public String toString() {
-        return "Comparações: " + comparacoes + 
-               " | Movimentações: " + movimentacoes + 
-               " | Tempo: " + tempoExecucao + " ns";
+        double seconds = execTime / 1_000_000_000.0;
+        return "Comparisons: " + comparisons + 
+               " | Moves: " + moves + 
+               " | Time: " + seconds + " s";
     }
 }

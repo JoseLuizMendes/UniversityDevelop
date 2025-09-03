@@ -5,120 +5,120 @@ import java.util.Scanner;
 public class SearchOrd {
 
     // ------------------- MENU -------------------
-    public static void Menu(Scanner sc, int[] vetor) {
-        System.out.println("\n\t    === MENU ORDENAÇÃO ===");
-        System.out.println("1 - SELEÇÃO DIRETA");
+    public static void menu(Scanner sc, int[] arr) {
+        System.out.println("\n\t    === SORTING MENU ===");
+        System.out.println("1 - SELECTION SORT");
         System.out.println("2 - BUBBLESORT");
-        System.out.println("3 - INSERÇÃO DIRETA");
+        System.out.println("3 - INSERTION SORT");
         System.out.println("4 - SHELLSORT");
         System.out.println("5 - HEAPSORT");
-        System.out.println("0 - Sair");
-        System.out.print("\nDigite a opção que deseja executar: ");
+        System.out.println("0 - Exit");
+        System.out.print("\nChoose an option: ");
 
         int op = sc.nextInt();
-        Statistics est = null;
+        Statistics st = null;
 
         switch (op) {
-            case 1: est = selecaoDireta(vetor); break;
-            case 2: est = bubbleSort(vetor); break;
-            case 3: est = insercaoDireta(vetor); break;
-            case 4: est = shellSort(vetor); break;
-            case 5: est = heapSort(vetor); break;
-            case 0: System.out.println("Voltando..."); return;
-            default: System.out.println("Opção inválida!");
+            case 1: st = selectionSort(arr); break;
+            case 2: st = bubbleSort(arr); break;
+            case 3: st = insertionSort(arr); break;
+            case 4: st = shellSort(arr); break;
+            case 5: st = heapSort(arr); break;
+            case 0: System.out.println("Returning..."); return;
+            default: System.out.println("Invalid option!");
         }
 
-        if (est != null) {
-            System.out.println(est);
+        if (st != null) {
+            System.out.println(st);
         }
     }
 
-    // ------------------- SELEÇÃO DIRETA -------------------
-    public static Statistics selecaoDireta(int[] vetor) {
-        long comparacoes = 0, movimentacoes = 0;
-        long inicio = System.nanoTime();
+    // ------------------- SELECTION SORT -------------------
+    public static Statistics selectionSort(int[] arr) {
+        long comps = 0, moves = 0;
+        long start = System.nanoTime();
 
-        int n = vetor.length;
+        int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
-            int minimo = i;
+            int min = i;
             for (int j = i + 1; j < n; j++) {
-                comparacoes++;
-                if (vetor[j] < vetor[minimo]) {
-                    minimo = j;
+                comps++;
+                if (arr[j] < arr[min]) {
+                    min = j;
                 }
             }
-            if (minimo != i) {
-                int temp = vetor[minimo];
-                vetor[minimo] = vetor[i];
-                vetor[i] = temp;
-                movimentacoes += 3;
+            if (min != i) {
+                int temp = arr[min];
+                arr[min] = arr[i];
+                arr[i] = temp;
+                moves += 3;
             }
         }
 
-        long fim = System.nanoTime();
-        return new Statistics(comparacoes, movimentacoes, fim - inicio);
+        long end = System.nanoTime();
+        return new Statistics(comps, moves, end - start);
     }
 
     // ------------------- BUBBLESORT -------------------
-    public static Statistics bubbleSort(int[] vetor) {
-        long comparacoes = 0, movimentacoes = 0;
-        long inicio = System.nanoTime();
+    public static Statistics bubbleSort(int[] arr) {
+        long comps = 0, moves = 0;
+        long start = System.nanoTime();
 
-        int n = vetor.length - 1;
+        int n = arr.length - 1;
         int i, j;
         do {
             i = 0;
             for (j = 0; j < n; j++) {
-                comparacoes++;
-                if (vetor[j] > vetor[j + 1]) {
-                    int temp = vetor[j];
-                    vetor[j] = vetor[j + 1];
-                    vetor[j + 1] = temp;
-                    movimentacoes += 3;
+                comps++;
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    moves += 3;
                     i = j;
                 }
             }
             n = i;
         } while (n >= 1);
 
-        long fim = System.nanoTime();
-        return new Statistics(comparacoes, movimentacoes, fim - inicio);
+        long end = System.nanoTime();
+        return new Statistics(comps, moves, end - start);
     }
 
-    // ------------------- INSERÇÃO DIRETA -------------------
-    public static Statistics insercaoDireta(int[] vetor) {
-        long comparacoes = 0, movimentacoes = 0;
-        long inicio = System.nanoTime();
+    // ------------------- INSERTION SORT -------------------
+    public static Statistics insertionSort(int[] arr) {
+        long comps = 0, moves = 0;
+        long start = System.nanoTime();
 
-        int n = vetor.length;
+        int n = arr.length;
         for (int i = 1; i < n; i++) {
-            int temp = vetor[i];
-            movimentacoes++;
+            int temp = arr[i];
+            moves++;
             int j = i - 1;
             while (j >= 0) {
-                comparacoes++;
-                if (vetor[j] > temp) {
-                    vetor[j + 1] = vetor[j];
-                    movimentacoes++;
+                comps++;
+                if (arr[j] > temp) {
+                    arr[j + 1] = arr[j];
+                    moves++;
                     j--;
                 } else {
                     break;
                 }
             }
-            vetor[j + 1] = temp;
-            movimentacoes++;
+            arr[j + 1] = temp;
+            moves++;
         }
 
-        long fim = System.nanoTime();
-        return new Statistics(comparacoes, movimentacoes, fim - inicio);
+        long end = System.nanoTime();
+        return new Statistics(comps, moves, end - start);
     }
 
     // ------------------- SHELLSORT -------------------
-    public static Statistics shellSort(int[] vetor) {
-        long comparacoes = 0, movimentacoes = 0;
-        long inicio = System.nanoTime();
+    public static Statistics shellSort(int[] arr) {
+        long comps = 0, moves = 0;
+        long start = System.nanoTime();
 
-        int n = vetor.length;
+        int n = arr.length;
         int h = 1;
         do {
             h = 3 * h + 1;
@@ -127,76 +127,76 @@ public class SearchOrd {
         do {
             h = h / 3;
             for (int i = h; i < n; i++) {
-                int temp = vetor[i];
-                movimentacoes++;
+                int temp = arr[i];
+                moves++;
                 int j = i;
                 while (j >= h) {
-                    comparacoes++;
-                    if (vetor[j - h] > temp) {
-                        vetor[j] = vetor[j - h];
-                        movimentacoes++;
+                    comps++;
+                    if (arr[j - h] > temp) {
+                        arr[j] = arr[j - h];
+                        moves++;
                         j -= h;
                     } else {
                         break;
                     }
                 }
-                vetor[j] = temp;
-                movimentacoes++;
+                arr[j] = temp;
+                moves++;
             }
         } while (h > 1);
 
-        long fim = System.nanoTime();
-        return new Statistics(comparacoes, movimentacoes, fim - inicio);
+        long end = System.nanoTime();
+        return new Statistics(comps, moves, end - start);
     }
 
     // ------------------- HEAPSORT -------------------
-    public static Statistics heapSort(int[] vetor) {
-        long comparacoes = 0, movimentacoes = 0;
-        long inicio = System.nanoTime();
+    public static Statistics heapSort(int[] arr) {
+        long comps = 0, moves = 0;
+        long start = System.nanoTime();
 
-        int dir = vetor.length - 1;
-        int esq = (dir - 1) / 2;
+        int dir = arr.length - 1;
+        int left = (dir - 1) / 2;
 
-        while (esq >= 0) {
-            comparacoes += refazHeap(vetor, esq--, vetor.length - 1);
+        while (left >= 0) {
+            comps += rebuildHeap(arr, left--, arr.length - 1);
         }
 
         while (dir > 0) {
-            int temp = vetor[0];
-            vetor[0] = vetor[dir];
-            vetor[dir--] = temp;
-            movimentacoes += 3;
-            comparacoes += refazHeap(vetor, 0, dir);
+            int temp = arr[0];
+            arr[0] = arr[dir];
+            arr[dir--] = temp;
+            moves += 3;
+            comps += rebuildHeap(arr, 0, dir);
         }
 
-        long fim = System.nanoTime();
-        return new Statistics(comparacoes, movimentacoes, fim - inicio);
+        long end = System.nanoTime();
+        return new Statistics(comps, moves, end - start);
     }
 
-    private static long refazHeap(int[] vetor, int esq, int dir) {
-        long comparacoes = 0;
-        int i = esq;
-        int maiorFilho = 2 * i + 1;
-        int raiz = vetor[i];
+    private static long rebuildHeap(int[] arr, int left, int right) {
+        long comps = 0;
+        int i = left;
+        int largestChild = 2 * i + 1;
+        int root = arr[i];
         boolean heap = false;
 
-        while ((maiorFilho <= dir) && (!heap)) {
-            if (maiorFilho < dir) {
-                comparacoes++;
-                if (vetor[maiorFilho] < vetor[maiorFilho + 1]) {
-                    maiorFilho++;
+        while ((largestChild <= right) && (!heap)) {
+            if (largestChild < right) {
+                comps++;
+                if (arr[largestChild] < arr[largestChild + 1]) {
+                    largestChild++;
                 }
             }
-            comparacoes++;
-            if (raiz < vetor[maiorFilho]) {
-                vetor[i] = vetor[maiorFilho];
-                i = maiorFilho;
-                maiorFilho = 2 * i + 1;
+            comps++;
+            if (root < arr[largestChild]) {
+                arr[i] = arr[largestChild];
+                i = largestChild;
+                largestChild = 2 * i + 1;
             } else {
                 heap = true;
             }
         }
-        vetor[i] = raiz;
-        return comparacoes;
+        arr[i] = root;
+        return comps;
     }
 }
