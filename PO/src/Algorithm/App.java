@@ -59,12 +59,6 @@ public class App {
             op = sc.nextInt();
             executeOption(op);
         } while (op != 0);
-        
-        say();
+ 
     }
-
-	private static void say() {
-		// TODO Auto-generated method stub
-		
-	}
 }
