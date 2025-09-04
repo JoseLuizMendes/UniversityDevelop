@@ -1,14 +1,5 @@
 # 📚 Disciplina: Banco de Dados
 
-**Instituição:** FAESA Centro Universitário  
-**Curso:** Bacharelado em Ciência da Computação  
-**Código da Disciplina:** D009519  
-**Carga Horária Total:** 80h  
-**CH de TDE:** 20h  
-**Matriz Curricular:** 20191-0  
-
----
-
 ## 📝 Ementa
 
 - Banco de Dados Relacional  
