@@ -14,6 +14,7 @@ Atividade de estudo na disciplina de **Banco de Dados**, com foco na construçã
 ## 📂 Estrutura do repositório
 
 📁 DataBase/
+
 ├── 📁 mermaid/ → Diagramas em Mermaid
 
 ├── 📁 brmodelo/ → Arquivos e exportações do brModelo
