@@ -26,4 +26,4 @@ A ideia é centralizar aqui tudo o que for sendo produzido nas disciplinas, de f
 
 ## 👨‍💻 Autor
 
-Repositório mantido por **José Luiz Mendes**, estudante de **Ciência da Comptação**.  
+Repositório mantido por **José Luiz Mendes**, estudante de **Ciência da Comptação**, a partir do **4° Período** do curso.  
