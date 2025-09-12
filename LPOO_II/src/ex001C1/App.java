@@ -43,7 +43,7 @@ static int size;
 	private static ArrayList<Integer> removeEvenNumbers(ArrayList<Integer> list) {
 		ArrayList<Integer> oddNumbers = new ArrayList<>();
         for (Integer number : list) {
-            if (number % 2 != 0) { // Se for ímpar
+            if (number % 2 != 0) { 
                 oddNumbers.add(number);
             }
         }
