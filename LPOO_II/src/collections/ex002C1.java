@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ex002C2 {
+public class ex002C1 {
     /*
      * Faça um programa que leia uma lista de inteiros e, a partir
      * dela, construa uma outra lista que contém os mesmos
