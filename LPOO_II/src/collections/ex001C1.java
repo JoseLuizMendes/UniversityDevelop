@@ -25,7 +25,7 @@ public class ex001C1 {
         fill(list2);
 
         // remove equal numbers from frist list1 and sort them
-        aux = new TreeSet<Integer>(list1);
+        aux = new TreeSet<>(list1);
 
         // concat all numbers from list1 into list2
         aux.addAll(list2);
