@@ -15,7 +15,7 @@ public static Scanner sc = new Scanner(System.in);
 	}
 	private static void retirarPar(FilaInt fila) {
 		int num, tam = fila.size(); 
-		for(int i=0; i<fila.size(); i++) {
+		for(int i=0; i<tam; i++) {
 			num= fila.dequeue();
 			if(num%2 == 1) {
 				fila.enqueue(num);
