@@ -1,0 +1,153 @@
+classDiagram
+    direction LR
+
+    class Cla {
+        +id
+        +nome
+        +descricao
+        +pontuacao
+        +membrosCount
+        +adicionarMembro()
+        +removerMembro()
+        +consultarHistoricoBatalhas()
+    }
+
+    class Usuario {
+        +id
+        +nome
+        +email
+        +senha
+        +idade
+        +avatar
+        +nivel
+        +xp
+        +fitcoins
+        +cadastrar()
+        +editarPerfil()
+        +registrarAtividade(distancia, duracao)
+        +entrarCla(clanId)
+        +sairCla()
+    }
+
+    class LiderCla {
+        +criarCla()
+        +convidarJogador()
+        +removerMembro()
+        +cadastrarClaEmEvento()
+    }
+
+    class Administrador {
+        +criarEvento()
+        +criarMissao()
+        +inserirItemLoja()
+        +banirUsuario()
+    }
+
+    class Missao {
+        +id
+        +titulo
+        +tipo
+        +meta
+        +recompensa
+        +status
+        +atualizarProgresso(usuarioId, valor)
+    }
+
+    class Corrida {
+        +id
+        +usuarioId
+        +data
+        +distancia
+        +duracao
+        +xpGanho
+        +fitcoinsGanho
+    }
+
+    class Boss {
+        +id
+        +nome
+        +dificuldade
+        +duracao
+        +recompensa
+    }
+
+    class Raid {
+        +id
+        +bossId
+        +participantes
+        +status
+        +iniciar()
+        +finalizar()
+    }
+
+    class Loja {
+        +id
+        +nome
+        +itens
+        +listarItens()
+        +comprarItem(usuarioId, itemId)
+    }
+
+    class Item {
+        +id
+        +nome
+        +descricao
+        +preco
+        +tipo
+        +raridade
+        +disponibilidade
+    }
+
+    class FitcoinTransaction {
+        +id
+        +usuarioId
+        +valor
+        +tipo
+        +origem
+        +data
+    }
+
+    class Evento {
+        +id
+        +nome
+        +tipo
+        +dataInicio
+        +dataFim
+        +registrarCla(claId)
+    }
+
+    class ChatCla {
+        +claId
+        +mensagens
+        +enviarMensagem(usuarioId, texto)
+    }
+
+    class Amizade {
+        +usuarioA
+        +usuarioB
+        +status
+        +solicitarAmizade(de, para)
+        +aceitarAmizade(de, para)
+    }
+
+    class Ranking {
+        +posicao
+        +alvoId
+        +tipo
+        +pontuacao
+    }
+
+    %% Herancas
+    Usuario <|-- LiderCla
+    Usuario <|-- Administrador
+
+    %% Relações (multiplicidades ajustadas)
+    Usuario "0..*" --> "1" Cla 
+    Usuario "1" --> "0..*" Corrida 
+    Loja "1" o-- "0..*" Item 
+    Raid "1" o-- "1" Boss 
+    Missao "1" <-- "0..*" Usuario
+
+    %% Nota: se a multiplicidade ainda estiver parcialmente encoberta no seu renderer,
+    %% posso inverter a direção (direction TB) ou posicionar manualmente as classes declarando-as
+    %% em uma ordem específica; diga qual renderer/preview você está usando (extensão VSCode?).
