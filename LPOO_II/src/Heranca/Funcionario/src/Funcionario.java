@@ -26,4 +26,8 @@ public abstract class Funcionario {
 
     public abstract double calcularSalario();
 
+    @Override
+    public String toString(){
+		return (this.getNome()+" - "+this.getMatricula());
+	}
 }
