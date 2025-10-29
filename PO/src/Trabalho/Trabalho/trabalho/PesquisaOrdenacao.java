@@ -47,10 +47,10 @@ public class PesquisaOrdenacao {
 				st = insertionSort(arr);
 				break;
 			case 3:
-				Search(arr, opcao);
+				st = Search(arr);
 				break;
 			case 4:
-				MelhoradaSearch(arr, opcao);
+				st = optimizedSearchPrompt(arr);
 				break;
 			case 5:
 				st = pesqBinaria(arr);
@@ -208,6 +208,45 @@ public class PesquisaOrdenacao {
 		}
 		long fim = System.nanoTime();
 		return new SearchResult(new Estatisticas(comparacoes, movimentacoes, fim - inicio), encontrado, pos);
+	}
+
+	// ------------------- PESQUISA SEQUENCIAL OTIMIZADA -------------------
+	// percorre vetor ordenado e para se encontrar um elemento maior que a chave
+	private static SearchResult sequentialOptimizedInternal(int[] arrSorted, int chave, boolean printResult) {
+		long inicio = System.nanoTime();
+		long comparacoes = 0;
+		long movimentacoes = 0;
+		boolean encontrado = false;
+		int pos = -1;
+		for (int i = 0; i < arrSorted.length; i++) {
+			comparacoes++; // comparacao arr[i] vs chave
+			movimentacoes++; // acesso
+			if (arrSorted[i] == chave) {
+				encontrado = true;
+				pos = i;
+				if (printResult)
+					System.out.println("Número encontrado na posição " + pos + "!");
+				break;
+			} else if (arrSorted[i] > chave) {
+				// como o vetor está ordenado, podemos parar
+				break;
+			}
+		}
+		if (!encontrado && printResult)
+			System.out.println("Nenhum número encontrado!");
+		long fim = System.nanoTime();
+		return new SearchResult(new Estatisticas(comparacoes, movimentacoes, fim - inicio), encontrado, pos);
+	}
+
+	// wrapper que pergunta ao usuário e usa a versão otimizada (ordenando uma
+	// cópia)
+	private static Estatisticas optimizedSearchPrompt(int[] arr) {
+		System.out.println("Informe o número desejado: ");
+		int chave = sc.nextInt();
+		int[] copia = arr.clone();
+		java.util.Arrays.sort(copia);
+		SearchResult r = sequentialOptimizedInternal(copia, chave, true);
+		return r.stats;
 	}
 
 	// ------------------- PESQUISA MELHORADA -------------------
@@ -406,6 +445,8 @@ public class PesquisaOrdenacao {
 				movimentacoes++;
 			}
 		}
+		System.out.println("Maior: " + maior);
+		System.out.println("Menor: " + menor);
 		long fim = System.nanoTime();
 		return new Estatisticas(0, movimentacoes, fim - inicio);
 
